@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  AbsoluteFill,
-  useCurrentFrame,
-  useVideoConfig,
-  interpolate,
-  Img,
-} from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate, Img } from "remotion";
 import { TextAnimation } from "../../library/components/text/TextAnimation";
 import { Vignette } from "../../library/components/effects/Vignette";
 import { Noise } from "../../library/components/effects/Noise";

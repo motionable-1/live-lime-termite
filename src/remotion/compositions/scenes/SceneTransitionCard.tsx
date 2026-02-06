@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring, interpolate, Easing } from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { TextAnimation } from "../../library/components/text/TextAnimation";
 import { Noise } from "../../library/components/effects/Noise";
 import { FloatingOrbs } from "./FloatingOrbs";
@@ -12,7 +12,6 @@ interface SceneTransitionCardProps {
 }
 
 export const SceneTransitionCard: React.FC<SceneTransitionCardProps> = ({
-  headingFont,
   bodyFont,
   text,
   accentColor = "#FFC300",
@@ -76,7 +75,7 @@ export const SceneTransitionCard: React.FC<SceneTransitionCardProps> = ({
                 duration: 0.7,
                 stagger: 0.1,
                 ease: "power3.out",
-              }
+              },
             );
             return tl;
           }}

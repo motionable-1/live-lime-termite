@@ -1,5 +1,13 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring, interpolate, Easing, Img } from "remotion";
+import {
+  AbsoluteFill,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+  Easing,
+  Img,
+} from "remotion";
 import { TextAnimation } from "../../library/components/text/TextAnimation";
 import { Vignette } from "../../library/components/effects/Vignette";
 import { Noise } from "../../library/components/effects/Noise";
@@ -41,7 +49,12 @@ export const SceneValue: React.FC<SceneValueProps> = ({
     : 0;
 
   // Shape entrance
-  const shapeScale = spring({ frame, fps, config: { damping: 12, stiffness: 80 }, delay: 5 });
+  const shapeScale = spring({
+    frame,
+    fps,
+    config: { damping: 12, stiffness: 80 },
+    delay: 5,
+  });
   const shapeRotate = interpolate(frame, [0, 300], [0, 360]);
 
   // Accent line width
@@ -119,7 +132,14 @@ export const SceneValue: React.FC<SceneValueProps> = ({
           transform: `rotate(${shapeRotate * 0.5}deg)`,
         }}
       >
-        <ShapeAnimation shape="ring" animation="rotate" size={100} color={accentColor} strokeWidth={1.5} speed={0.15} />
+        <ShapeAnimation
+          shape="ring"
+          animation="rotate"
+          size={100}
+          color={accentColor}
+          strokeWidth={1.5}
+          speed={0.15}
+        />
       </div>
 
       {/* Content */}
@@ -140,7 +160,13 @@ export const SceneValue: React.FC<SceneValueProps> = ({
               tl.fromTo(
                 split.chars,
                 { opacity: 0, scale: 0.5 },
-                { opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, ease: "back.out(1.7)" }
+                {
+                  opacity: 1,
+                  scale: 1,
+                  duration: 0.4,
+                  stagger: 0.03,
+                  ease: "back.out(1.7)",
+                },
               );
               return tl;
             }}
@@ -170,7 +196,7 @@ export const SceneValue: React.FC<SceneValueProps> = ({
                   duration: 1,
                   stagger: 0.05,
                   ease: "power3.out",
-                }
+                },
               );
               return tl;
             }}
@@ -209,7 +235,13 @@ export const SceneValue: React.FC<SceneValueProps> = ({
               tl.fromTo(
                 split.words,
                 { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: "power2.out" }
+                {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.5,
+                  stagger: 0.06,
+                  ease: "power2.out",
+                },
               );
               return tl;
             }}

@@ -1,5 +1,12 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring, interpolate, Easing } from "remotion";
+import {
+  AbsoluteFill,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+  Easing,
+} from "remotion";
 import { TextAnimation } from "../../library/components/text/TextAnimation";
 import { Vignette } from "../../library/components/effects/Vignette";
 import { Noise } from "../../library/components/effects/Noise";
@@ -11,12 +18,20 @@ interface SceneOutroProps {
   bodyFont: string;
 }
 
-export const SceneOutro: React.FC<SceneOutroProps> = ({ headingFont, bodyFont }) => {
+export const SceneOutro: React.FC<SceneOutroProps> = ({
+  headingFont,
+  bodyFont,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   // Logo container scale
-  const containerScale = spring({ frame, fps, config: { damping: 15, stiffness: 80 }, delay: 5 });
+  const containerScale = spring({
+    frame,
+    fps,
+    config: { damping: 15, stiffness: 80 },
+    delay: 5,
+  });
 
   // Three values stagger in
   const values = ["Innovation", "Integrity", "Impact"];
@@ -119,7 +134,7 @@ export const SceneOutro: React.FC<SceneOutroProps> = ({ headingFont, bodyFont })
                   duration: 0.8,
                   stagger: 0.05,
                   ease: "back.out(1.5)",
-                }
+                },
               );
               return tl;
             }}
@@ -138,15 +153,25 @@ export const SceneOutro: React.FC<SceneOutroProps> = ({ headingFont, bodyFont })
           >
             {values.map((value, i) => {
               const valueDelay = 40 + i * 12;
-              const valueOpacity = interpolate(frame, [valueDelay, valueDelay + 15], [0, 1], {
-                extrapolateLeft: "clamp",
-                extrapolateRight: "clamp",
-              });
-              const valueY = interpolate(frame, [valueDelay, valueDelay + 15], [25, 0], {
-                extrapolateLeft: "clamp",
-                extrapolateRight: "clamp",
-                easing: Easing.out(Easing.cubic),
-              });
+              const valueOpacity = interpolate(
+                frame,
+                [valueDelay, valueDelay + 15],
+                [0, 1],
+                {
+                  extrapolateLeft: "clamp",
+                  extrapolateRight: "clamp",
+                },
+              );
+              const valueY = interpolate(
+                frame,
+                [valueDelay, valueDelay + 15],
+                [25, 0],
+                {
+                  extrapolateLeft: "clamp",
+                  extrapolateRight: "clamp",
+                  easing: Easing.out(Easing.cubic),
+                },
+              );
 
               return (
                 <React.Fragment key={value}>

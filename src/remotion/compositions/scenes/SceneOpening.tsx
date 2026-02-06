@@ -1,20 +1,29 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring, interpolate, Img } from "remotion";
+import {
+  AbsoluteFill,
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  Img,
+} from "remotion";
 import { TextAnimation } from "../../library/components/text/TextAnimation";
 import { Vignette } from "../../library/components/effects/Vignette";
 import { Noise } from "../../library/components/effects/Noise";
 import { FloatingOrbs } from "./FloatingOrbs";
 
-const CITY_IMG = "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/brand-story/1770414787089_uzoo2pscapg_cityscape_golden_hour.png";
+const CITY_IMG =
+  "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/brand-story/1770414787089_uzoo2pscapg_cityscape_golden_hour.png";
 
 interface SceneOpeningProps {
   headingFont: string;
   bodyFont: string;
 }
 
-export const SceneOpening: React.FC<SceneOpeningProps> = ({ headingFont, bodyFont }) => {
+export const SceneOpening: React.FC<SceneOpeningProps> = ({
+  headingFont,
+  bodyFont,
+}) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   // Cinematic image zoom
   const imageScale = interpolate(frame, [0, 180], [1.15, 1.0], {
@@ -80,7 +89,13 @@ export const SceneOpening: React.FC<SceneOpeningProps> = ({ headingFont, bodyFon
               tl.fromTo(
                 split.chars,
                 { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.5, stagger: 0.04, ease: "power3.out" }
+                {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.5,
+                  stagger: 0.04,
+                  ease: "power3.out",
+                },
               );
               return tl;
             }}
@@ -110,7 +125,7 @@ export const SceneOpening: React.FC<SceneOpeningProps> = ({ headingFont, bodyFon
                   duration: 0.9,
                   stagger: 0.04,
                   ease: "back.out(1.4)",
-                }
+                },
               );
               return tl;
             }}
@@ -126,7 +141,8 @@ export const SceneOpening: React.FC<SceneOpeningProps> = ({ headingFont, bodyFon
                 extrapolateRight: "clamp",
               }),
               height: 2,
-              background: "linear-gradient(90deg, transparent, #FFC300, transparent)",
+              background:
+                "linear-gradient(90deg, transparent, #FFC300, transparent)",
               margin: "32px auto",
               opacity: interpolate(frame, [60, 80], [0, 1], {
                 extrapolateLeft: "clamp",
@@ -150,7 +166,14 @@ export const SceneOpening: React.FC<SceneOpeningProps> = ({ headingFont, bodyFon
               tl.fromTo(
                 split.words,
                 { opacity: 0, y: 25, filter: "blur(8px)" },
-                { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, stagger: 0.08, ease: "power2.out" }
+                {
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  duration: 0.6,
+                  stagger: 0.08,
+                  ease: "power2.out",
+                },
               );
               return tl;
             }}
